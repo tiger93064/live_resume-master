@@ -1,4 +1,4 @@
-# Vite with Vuetify 3 Alpha Template
+# Live Resume
 This is a starter template for testing new building tools for vue. This template uses the below stack.
 
 ## Vite.js
