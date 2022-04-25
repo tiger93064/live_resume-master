@@ -39,9 +39,9 @@ export default {
 
     const data = reactive({
       socialMedia: [
-        { name: "INSTAGRAM", url: "https://www.instagram.com/guanting.liu_/" },
-        { name: "FACEBOOK", url: "https://www.facebook.com/tiger93064" },
-        { name: "GITHUB", url: "https://github.com/tiger93064" },
+        { name: "GITHUB", url: "https://github.com/tiger93064", icon: "mdi-github" },
+        { name: "INSTAGRAM", url: "https://www.instagram.com/guanting.liu_/", icon: "mdi-instagram" },
+        { name: "FACEBOOK", url: "https://www.facebook.com/tiger93064", icon: "mdi-facebook" },
       ],
       skills: [
         { name: "Vue.js", icon: "mdi-vuejs" },
@@ -237,7 +237,7 @@ export default {
 
           <v-list-item class="mt-8">
             <v-list-item-avatar start>
-              <v-icon color="primary" icon="mdi-phone" size="mini"></v-icon>
+              <v-icon color="primary" icon="mdi-phone" size="small"></v-icon>
             </v-list-item-avatar>
             <v-list-item-header>
               <v-list-item-subtitle>(+886) 928436278</v-list-item-subtitle>
@@ -246,7 +246,7 @@ export default {
 
           <v-list-item>
             <v-list-item-avatar start>
-              <v-icon color="primary" icon="mdi-mail"></v-icon>
+              <v-icon color="primary" icon="mdi-at"  size="small"></v-icon>
             </v-list-item-avatar>
             <v-list-item-header>
               <v-list-item-subtitle
@@ -259,7 +259,7 @@ export default {
 
           <v-list-item>
             <v-list-item-avatar start>
-              <v-icon color="primary" icon="mdi-home"></v-icon>
+              <v-icon color="primary" icon="mdi-home"  size="small"></v-icon>
             </v-list-item-avatar>
             <v-list-item-header>
               <v-list-item-subtitle>Hsinchiu/ Taichung</v-list-item-subtitle>
@@ -333,17 +333,28 @@ export default {
               </v-list-item-subtitle>
             </v-list-item-header>
           </v-list-item>
-          <div class="mt-8">
+          <div class="mt-12 ml-2">
             <v-btn
+             v-for="sm in data.socialMedia"
+              class="mr-2"
+              icon
+              variant="text"
+              target="_blank"
+              :href="sm.url"
+              color="primary"
+              size="large"
+            >
+              <v-icon>{{sm.icon}}</v-icon>
+            </v-btn>
+            <!-- <v-btn
               v-for="sm in data.socialMedia"
               class="mb-3"
               width="12em"
               variant="outlined"
               block
-              target="_blank"
-              :href="sm.url"
+             
               >{{ sm.name }}</v-btn
-            ><br />
+            ><br /> -->
           </div>
         </v-card>
 
