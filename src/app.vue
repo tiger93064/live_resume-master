@@ -36,7 +36,7 @@
       class="ml-1"
      >
       mdi-flash
-    </v-icon></i> by 🐯
+    </v-icon></i> by <a class="text-decoration-none" href="https://github.com/tiger93064/live_resume-master" target="_blank">🐯</a>
       </v-col>
       <!-- -->
     </v-footer>
