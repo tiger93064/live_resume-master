@@ -4,7 +4,7 @@
       <!-- -->
     </v-navigation-drawer>
 
-    <v-app-bar app class="  d-flex align-center" color="primary" >
+    <v-app-bar app class="  d-flex align-center"   style="background: rgba(62, 197, 149, 0.9);backdrop-filter: blur(8px);">
       <v-container>
       LIVE RESUME
       </v-container>
@@ -22,7 +22,7 @@
       </v-container>
     </v-main>
 
-    <v-footer  color="primary" app >
+    <v-footer app style="position:sticky;bottom:0;background: rgba(62, 197, 149, 0.8);backdrop-filter: blur(3px);">
       <v-col
         class="text-center pt-5"
         cols="12"

@@ -60,11 +60,11 @@ export default {
           date: "JAN 2022 - NOW",
           title: "New Flags Supermarket POS",
           tools: ["Vue.js", "element-ui", "Vuetify"],
-          desc: "This project localed in Belize, South America, empowered by ICDF TAIWAN. To help local supermarket building cutting-edge POS software in store. Having 3000+ members in system.",
+          desc: "This project localed in Belize, South America, empowered by ICDF TAIWAN. To help local supermarket building cutting-edge POS software in store. Having 4000+ members in system. ",
           features: [
             {
               name: "Web Crawler",
-              desc: " a tiny Windows Service tool bases on  ",
+              desc: " a tiny Windows Service tool based on  ",
             },
             { name: "Electron", desc: " which is a " },
             {
@@ -79,11 +79,13 @@ export default {
           links: [
             {
               title: "Client PWA",
-              url: "https://newflagsbelize.shop:8443/posWebApp",
+              url: "https://demo.newflagsbelize.shop/posWebApp",
             },
-            { title: "Office", url: "https://newflagsbelize.shop:8443" },
+            { title: "Office", url: "https://demo.newflagsbelize.shop", pw: { account: 'demo01', password: '123456' } },
           ],
           refs:[
+            { url: 'https://www.facebook.com/taiwaninbelize/photos/a.1103643516690107/2004550023266114/'},
+            { url: 'https://www.facebook.com/taiwanicdf/posts/pfbid0N8xdYSGzMgCUPjgXTQgp3w1Hzx236ipZZXJ8JG4KCkRLakakVkwa2YxJfBZVzYdwl'},
             { url: 'https://www.facebook.com/newflagscayo/photos/a.245054479353883/1161665244359464/'},
             { url: 'https://www.facebook.com/newflagscayo/photos/a.264830307376300/1198788663980455/'},
             { url: 'https://www.facebook.com/taiwanicdf/photos/pcb.5068468143218035/5068461989885317'},
@@ -138,7 +140,7 @@ export default {
           features: [
             {
               name: "PrimeVue",
-              desc: " as the second UI framework that supports date selection in calendar component.",
+              desc: " as the second UI framework that supports date selection in calendar component to support web a11y.",
             },
             { name: "", desc: "The first project that use latest " },
 
@@ -240,7 +242,7 @@ export default {
               <v-icon color="primary" icon="mdi-phone" size="small"></v-icon>
             </v-list-item-avatar>
             <v-list-item-header>
-              <v-list-item-subtitle>(+886) 928436278</v-list-item-subtitle>
+              <v-list-item-subtitle><a class="text-darkgrey" href="tel:+886928436278">(+886) 928436278</a></v-list-item-subtitle>
             </v-list-item-header>
           </v-list-item>
 
@@ -281,7 +283,7 @@ export default {
             <v-list-item-header>
               <v-list-item-title>EDUCATION</v-list-item-title>
               <div class="text-caption mt-1 font-weight-bold">
-                BA in<br />
+                BS in<br />
                 Computer Science
                 <div class="float-right font-weight-regular">2016 - 2020</div>
               </div>
@@ -296,13 +298,14 @@ export default {
               <v-list-item-title class="mb-2">LICENSE</v-list-item-title>
               <div
                 class="text-caption"
-                v-for="i in [
+                v-for="(i, id) in [
                   'iPAS物聯網應用工程師 初級',
                   'iPAS行動應用程式設計師(iOS) 初級',
                   'iPAS行動應用程式設計師(Android) 初級',
                   '電腦硬體裝修 乙級',
                   'TOEIC   715',
                 ]"
+                :key="id"
               >
                 {{ i }}
               </div>
@@ -314,7 +317,8 @@ export default {
               <v-list-item-title>SKILLS</v-list-item-title>
               <v-list-item-subtitle>
                 <v-chip
-                  v-for="skill in data.skills"
+                  v-for="(skill , id) in data.skills"
+                  :key="id"
                   class="ma-2"
                   close
                   :color="dynamicColor(skill.name)[0]"
@@ -335,7 +339,8 @@ export default {
           </v-list-item>
           <div class="mt-12 ml-2">
             <v-btn
-             v-for="sm in data.socialMedia"
+             v-for="(sm, id) in data.socialMedia"
+             :key="id"
               class="mr-2"
               icon
               variant="text"
@@ -395,7 +400,7 @@ export default {
           :key="index"
         >
           <v-card-header>
-            <div>
+            <div class="pa-3">
               <div class="text-overline mb-1">{{ project.date }}</div>
               <div class="text-h4 mb-1">{{ project.title }}</div>
             </div>
@@ -421,7 +426,7 @@ export default {
               {{ project.desc }}
             </div>
             <div class="mt-4">
-              <span v-for="f in project.features"
+              <span v-for="(f,id) in project.features" :key="id"
                 ><span
                   ><v-chip
                     size="x-small"
@@ -438,7 +443,7 @@ export default {
             <div class="mt-4 font-weight-medium"><v-icon v-show="project.refs" class="mr-1" size="small" color="info" >
                   mdi-link
                 </v-icon>
-              <v-btn variant="text" class="mr-1" size="x-small" color="info" target="_blank" v-for="(h,index) in project.refs" :href="h.url"
+              <v-btn variant="text" class="mr-1" size="x-small" color="info" target="_blank" v-for="(h, index) in project.refs" :key="index" :href="h.url"
                 >Ref{{index+1}}</v-btn
               >
             </div>
@@ -451,26 +456,47 @@ export default {
             color="black-accent-4"
             disabled
             size="small"
-            @click=""
+            @click=";"
           >
             LIVE PREVIEW </v-btn
           ><br />
 
           <v-card-actions class="ml-1">
-            <v-btn
-              v-for="link in project.links"
-              color="primary"
-              variant="contained-text"
-              class="mr-2"
-              flat
-              append
-              :href="link.url"
-              target="_blank"
-              >{{ link.title
-              }}<v-icon class="ml-1" large color="green-lighten-2">
-                mdi-open-in-new
-              </v-icon></v-btn
-            >
+            
+              
+                <div  v-for="(link, index) in project.links" :key="index">
+                  <v-btn
+                    color="primary"
+                    variant="contained-text"
+                    class="mr-2"
+                    flat
+                    append
+                    :href="link.url"
+                    v-bind="props"
+                    target="_blank"
+                    >{{ link.title
+                    }}<v-icon class="ml-1" large color="green-lighten-2">
+                      mdi-open-in-new
+                    </v-icon></v-btn
+                  >
+                  <v-tooltip text="Tooltip"  location="top" :disabled="!link.pw">
+                    <template v-slot:activator="{ props }">
+                    <v-btn
+                      v-bind="props"
+                      icon
+                      size="small"
+                      class="ml-n2"
+                      color="primary"
+                      v-if="link.pw"
+                    >
+                      <v-icon>mdi-information</v-icon>
+                    </v-btn>
+                    </template>
+                    <span v-if="link.pw">{{link.pw.account}}/{{link.pw.password}}</span>
+                  </v-tooltip>
+                </div>
+                
+             
           </v-card-actions>
         </v-card>
       </v-col>
