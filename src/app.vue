@@ -6,7 +6,9 @@
 
     <v-app-bar app class="  d-flex align-center"   style="background: rgba(62, 197, 149, 0.9);backdrop-filter: blur(8px);">
       <v-container>
-      LIVE RESUME
+        <span v-if="isTigerHiding">LIVE RESUME</span>
+        <span v-else>TIGER LIU</span>
+       
       </v-container>
       <!-- -->
     </v-app-bar>
@@ -18,25 +20,46 @@
       <v-container class="pt-12 fill-height" fluid style="width:1000px;background:#F0FFF0">
 
         <!-- If using vue-router -->
-        <router-view></router-view>
+        <router-view @showTiger="isTigerHiding = $event"></router-view>
       </v-container>
     </v-main>
 
-    <v-footer app style="position:sticky;bottom:0;background: rgba(62, 197, 149, 0.8);backdrop-filter: blur(3px);">
+    <v-footer height="50px" app style="position:sticky;bottom:0;background: rgba(255, 255, 255, 0.1);backdrop-filter: blur(3px);">
       <v-col
-        class="text-center pt-5"
+        class="text-center  "
         cols="12"
       >
-      this website created with Vue 3, <a class="text-green-darken-4  " target="_blank" href="https://next.vuetifyjs.com/en/">Vuetify 3 Beta</a><i><v-icon size="small"
-      class="ml-1"
-     >
-      mdi-vuetify
-    </v-icon></i>,
-       <a class="text-green-darken-4  " target="_blank" href="https://vitejs.dev">Vite</a><i><v-icon size="small"
-      class="ml-1"
-     >
-      mdi-flash
-    </v-icon></i> by <a class="text-decoration-none" href="https://github.com/tiger93064/live_resume-master" target="_blank">🐯</a>
+      <span class="d-none d-sm-inline">this website </span>
+      created with 
+      <a class=" " target="_blank" href="https://vuejs.org">
+        <span  class="d-none d-sm-inline text-green-darken-4">Vue 3</span>
+        <span class=" "> 
+          <v-icon size="small"
+            class=" "
+            color="green-darken-2"
+          >
+            mdi-vuejs
+          </v-icon>
+        </span>
+      </a>, 
+      <a class=" " target="_blank" href="https://vuetifyjs.com/en/">
+        <span class="d-none d-sm-inline text-green-darken-4 ">Vuetify 3</span>
+        <v-icon size="small"
+          class="ml-1"
+          color="blue-darken-3"
+        >
+          mdi-vuetify
+        </v-icon>
+      </a>,
+      <a class="" target="_blank" href="https://vitejs.dev">
+        <span class="d-none d-sm-inline text-green-darken-4 ">Vite</span>
+        <v-icon size="small"
+          class="ml-1"
+          color="yellow-darken-2"
+        >
+          mdi-flash
+        </v-icon>
+      </a> by <a class="text-decoration-none" href="https://github.com/tiger93064/live_resume-master" target="_blank">🐯</a>
       </v-col>
       <!-- -->
     </v-footer>
@@ -44,8 +67,21 @@
 </template>
 
 <script>
+import { ref, reactive, onMounted } from "vue";
+
 export default { 
-  name: 'App'
+  name: 'App',
+  setup() {
+    onMounted(() => {
+      // console.log('mounted')
+      
+    })
+
+    const isTigerHiding = ref(true);
+
+    return { isTigerHiding }
+    
+  }
 }
 </script>
 
