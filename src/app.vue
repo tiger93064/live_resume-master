@@ -6,19 +6,24 @@
 
     <v-app-bar app class="  d-flex align-center"   style="background: rgba(62, 197, 149, 0.9);backdrop-filter: blur(8px);">
       <v-container>
-        <span v-if="isTigerHiding">LIVE RESUME</span>
-        <span v-else>TIGER LIU</span>
+        
+        <span v-show="isTigerHiding">LIVE RESUME</span>
+
+        <v-slide-y-reverse-transition>
+          <span v-if="!isTigerHiding">TIGER LIU</span>
+        </v-slide-y-reverse-transition>
+        
        
       </v-container>
+      <v-btn to="/d3">D3 World</v-btn>
       <!-- -->
     </v-app-bar>
 
     <!-- Sizes your content based upon application components -->
-    <v-main  class="pa-6 fill-height">
+    <v-main  class="pb-0  fill-height">
 
       <!-- Provides the application the proper gutter -->
-      <v-container class="pt-12 fill-height" fluid style="width:1000px;background:#F0FFF0">
-
+      <v-container class="pt-12 fill-height d-flex align-start"  fluid style="max-width:1000px;background:#F0FFF0">
         <!-- If using vue-router -->
         <router-view @showTiger="isTigerHiding = $event"></router-view>
       </v-container>
@@ -30,7 +35,7 @@
         cols="12"
       >
       <span class="d-none d-sm-inline">this website </span>
-      created with 
+      crafted with 
       <a class=" " target="_blank" href="https://vuejs.org">
         <span  class="d-none d-sm-inline text-green-darken-4">Vue 3</span>
         <span class=" "> 
